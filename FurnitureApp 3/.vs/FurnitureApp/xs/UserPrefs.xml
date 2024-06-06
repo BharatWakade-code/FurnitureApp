@@ -1,0 +1,44 @@
+﻿<Properties StartupConfiguration="{37044302-1648-4E28-8494-6E6F05782C2A}|Default">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="Android.iqoo_z7_5g" />
+  <MonoDevelop.MonoDroid LastDeploySdkVersion="33.0.95" />
+  <MonoDevelop.Ide.ItemProperties.FurnitureApp PreferredExecutionTarget="Android.iqoo_z7_5g" />
+  <MonoDevelop.Ide.Workbench>
+    <Files>
+      <File FileName="FurnitureApp/Views/Home/HomePageView.xaml" Line="1" Column="1" />
+      <File FileName="FurnitureApp/ViewModel/Account/LoginViewModel.cs" Line="30" Column="9" />
+      <File FileName="FurnitureApp/Services/LoginServices.cs" Line="1" Column="1" />
+      <File FileName="FurnitureApp/ViewModel/Orders/PaymentPageViewModel.cs" Line="62" Column="18" />
+      <File FileName="FurnitureApp/MauiProgram.cs" Line="30" Column="12" />
+      <File FileName="FurnitureApp/App.xaml.cs" Line="1" Column="1" />
+      <File FileName="../../../../usr/local/share/dotnet/packs/Microsoft.Maui.Resizetizer.Sdk/7.0.101/targets/Microsoft.Maui.Resizetizer.targets" Line="773" Column="9" />
+      <File FileName="FurnitureApp/Platforms/iOS/AppDelegate.cs" Line="5" Column="24" />
+      <File FileName="FurnitureApp/Platforms/Android/AndroidManifest.xml" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="FurnitureApp" expanded="True" selected="True">
+            <Node name="FurnitureApp" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Platforms" expanded="True">
+                <Node name="Android" expanded="True" />
+                <Node name="iOS" expanded="True" />
+              </Node>
+              <Node name="ViewModel" expanded="True" />
+              <Node name="App.xaml" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+</Properties>

@@ -1,0 +1,354 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net7.0-ios;net7.0-android</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
+		<OutputType>Exe</OutputType>
+		<RootNamespace>FurnitureApp</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<!-- Display name -->
+		<ApplicationTitle>FurniTrend</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>"com.demo</ApplicationId>
+		<ApplicationIdGuid>b965abbf-0ab6-4148-8215-ff12ab9526c7</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">19.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
+	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\ProfileImage.png" />
+	  <MauiImage Remove="Resources\Images\profileImage.png" />
+	  <MauiImage Remove="Resources\Images\profileimagee.png" />
+	  <MauiImage Remove="Resources\Images\arrowdown.png" />
+	  <MauiImage Remove="Resources\Images\delete.png" />
+	  <MauiImage Remove="Resources\Images\addtocart.png" />
+	</ItemGroup>
+<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#FFFFFF" ForegroundScale="0.6" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#FFFFFF" BaseSize="128,128" ForegroundScale="0.8" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\*" BaseSize="168,208" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+	<PropertyGroup>
+  <MSBuildEmitSolution>true</MSBuildEmitSolution>
+</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
+	  <AndroidStoreUncompressedFileExtensions></AndroidStoreUncompressedFileExtensions>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="5.3.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		
+		<PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
+		<PackageReference Include="CommunityToolkit.Maui.Markup" Version="2.0.0" />
+		<PackageReference Include="CommunityToolkit.Maui.Core" Version="5.3.0" />
+		<PackageReference Include="The49.Maui.BottomSheet" Version="1.0.4" />
+		<PackageReference Include="Microsoft.Maui.Graphics" Version="8.0.14" />
+		<PackageReference Include="Plugin.LocalNotification" Version="10.1.8" />
+		<PackageReference Include="Plugin.Firebase" Version="2.0.3" />
+		<PackageReference Include="Plugin.Firebase.Crashlytics" Version="2.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Resources\Images\" />
+	  <Folder Include="Views\" />
+	  <Folder Include="ViewModel\" />
+	  <Folder Include="Handlers\" />
+	  <Folder Include="Model\" />
+	  <Folder Include="Views\Account\" />
+	  <Folder Include="ViewModel\Account\" />
+	  <Folder Include="Views\Home\" />
+	  <Folder Include="ViewModel\Home\" />
+	  <Folder Include="Views\Product\" />
+	  <Folder Include="ViewModel\Product\" />
+	  <Folder Include="Views\Profile\" />
+	  <Folder Include="ViewModel\Profile\" />
+	  <Folder Include="ViewModel\ProductDetailsPage\" />
+	  <Folder Include="Views\ProductDetailsPagee\" />
+	  <Folder Include="Views\Orders\" />
+	  <Folder Include="ViewModel\Orders\" />
+	  <Folder Include="Services\" />
+	  <Folder Include="RequestProvider\" />
+	  <Folder Include="ViewModel\Popup\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\shape.png" />
+	  <MauiImage Include="Resources\Images\backarrow.png" />
+	  <MauiImage Include="Resources\Images\rightarrow.png" />
+	  <MauiImage Include="Resources\Images\leftarrow.png" />
+	  <MauiImage Include="Resources\Images\avatar.png" />
+	  <MauiImage Include="Resources\Images\carticon.png" />
+	  <MauiImage Include="Resources\Images\menuicon.png" />
+	  <MauiImage Include="Resources\Images\minus.png" />
+	  <MauiImage Include="Resources\Images\plus.png" />
+	  <MauiImage Include="Resources\Images\furniture.png" />
+	  <MauiImage Include="Resources\Images\creamcolor.png" />
+	  <MauiImage Include="Resources\Images\green.png" />
+	  <MauiImage Include="Resources\Images\greenshadebed.png" />
+	  <MauiImage Include="Resources\Images\bluecouch.png" />
+	  <MauiImage Include="Resources\Images\clubchair.png" />
+	  <MauiImage Include="Resources\Images\blackfs.png" />
+	  <MauiImage Include="Resources\Images\multicolorcouch.png" />
+	  <MauiImage Include="Resources\Images\basket.png" />
+	  <MauiImage Include="Resources\Images\bbb.png" />
+	  <MauiImage Include="Resources\Images\beddd.png" />
+	  <MauiImage Include="Resources\Images\blackbed.png" />
+	  <MauiImage Include="Resources\Images\blackcouch.png" />
+	  <MauiImage Include="Resources\Images\blue.png" />
+	  <MauiImage Include="Resources\Images\blueclubchair.png" />
+	  <MauiImage Include="Resources\Images\bottlegreenclubchair.png" />
+	  <MauiImage Include="Resources\Images\brownes.png" />
+	  <MauiImage Include="Resources\Images\brownlatherclubchair.png" />
+	  <MauiImage Include="Resources\Images\brownssdinning.png" />
+	  <MauiImage Include="Resources\Images\cameraicon.png" />
+	  <MauiImage Include="Resources\Images\cash.png" />
+	  <MauiImage Include="Resources\Images\chocolatefs.png" />
+	  <MauiImage Include="Resources\Images\classicchair.png" />
+	  <MauiImage Include="Resources\Images\cod.png" />
+	  <MauiImage Include="Resources\Images\contact.png" />
+	  <MauiImage Include="Resources\Images\couch.png" />
+	  <MauiImage Include="Resources\Images\cream.png" />
+	  <MauiImage Include="Resources\Images\creambed.png" />
+	  <MauiImage Include="Resources\Images\creamclubchair.png" />
+	  <MauiImage Include="Resources\Images\cross.png" />
+	  <MauiImage Include="Resources\Images\customer.png" />
+	  <MauiImage Include="Resources\Images\deliveryicon.png" />
+	  <MauiImage Include="Resources\Images\dinningwithsidetabel.png" />
+	  <MauiImage Include="Resources\Images\email.png" />
+	  <MauiImage Include="Resources\Images\fivestar.png" />
+	  <MauiImage Include="Resources\Images\furniturelogo.png" />
+	  <MauiImage Include="Resources\Images\gpay.png" />
+	  <MauiImage Include="Resources\Images\gra.png" />
+	  <MauiImage Include="Resources\Images\gray.png" />
+	  <MauiImage Include="Resources\Images\graycaouch.png" />
+	  <MauiImage Include="Resources\Images\greencouchst.png" />
+	  <MauiImage Include="Resources\Images\greencouchts.png" />
+	  <MauiImage Include="Resources\Images\greenright.png" />
+	  <MauiImage Include="Resources\Images\homeblackicon.png" />
+	  <MauiImage Include="Resources\Images\homeicon.png" />
+	  <MauiImage Include="Resources\Images\location.png" />
+	  <MauiImage Include="Resources\Images\logout.png" />
+	  <MauiImage Include="Resources\Images\mastercard.png" />
+	  <MauiImage Include="Resources\Images\mathsplus.png" />
+	  <MauiImage Include="Resources\Images\multiply.png" />
+	  <MauiImage Include="Resources\Images\nastercard2.png" />
+	  <MauiImage Include="Resources\Images\officeicon.png" />
+	  <MauiImage Include="Resources\Images\orangeclubchair.png" />
+	  <MauiImage Include="Resources\Images\orangecouch.png" />
+	  <MauiImage Include="Resources\Images\order.png" />
+	  <MauiImage Include="Resources\Images\paytm.png" />
+	  <MauiImage Include="Resources\Images\peachclubchair.png" />
+	  <MauiImage Include="Resources\Images\peachcouch.png" />
+	  <MauiImage Include="Resources\Images\pencil.png" />
+	  <MauiImage Include="Resources\Images\person.png" />
+	  <MauiImage Include="Resources\Images\phone.png" />
+	  <MauiImage Include="Resources\Images\phonepe.png" />
+	  <MauiImage Include="Resources\Images\pngwingcom.png" />
+	  <MauiImage Include="Resources\Images\profile.png" />
+	  <MauiImage Include="Resources\Images\red.png" />
+	  <MauiImage Include="Resources\Images\right.png" />
+	  <MauiImage Include="Resources\Images\roundtabledinning.png" />
+	  <MauiImage Include="Resources\Images\violetcouch.png" />
+	  <MauiImage Include="Resources\Images\whiteclubchair.png" />
+	  <MauiImage Include="Resources\Images\whitees.png" />
+	  <MauiImage Include="Resources\Images\whitessdinning.png" />
+	  <MauiImage Include="Resources\Images\woodenbody.png" />
+	  <MauiImage Include="Resources\Images\woodenbodybed.png" />
+	  <MauiImage Include="Resources\Images\woodenlinebed.png" />
+	  <MauiImage Include="Resources\Images\yellowclubchair.png" />
+	  <MauiImage Include="Resources\Images\yellowcouch.png" />
+	  <MauiImage Include="Resources\Images\whit.png" />
+	  <MauiImage Include="Resources\Images\address.png" />
+	  <MauiImage Include="Resources\Images\muticolorchair.png" />
+	  <MauiImage Include="Resources\Images\redmodernchair.png" />
+	  <MauiImage Include="Resources\Images\yellowchair.png" />
+	  <MauiImage Include="Resources\Images\whitechair.png" />
+	  <MauiImage Include="Resources\Images\couchone.png" />
+	  <MauiImage Include="Resources\Images\couchtwo.png" />
+	  <MauiImage Include="Resources\Images\coucheight.png" />
+	  <MauiImage Include="Resources\Images\couchfive.png" />
+	  <MauiImage Include="Resources\Images\couchfour.png" />
+	  <MauiImage Include="Resources\Images\couchseven.png" />
+	  <MauiImage Include="Resources\Images\couchsix.png" />
+	  <MauiImage Include="Resources\Images\couchthree.png" />
+	  <MauiImage Include="Resources\Images\kidbed.png" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="Resources\Images\backarrow.png" />
+	  <None Remove="Resources\Images\rightarrow.png" />
+	  <None Remove="Resources\Fonts\OpenSans_SemiCondensed-Bold.ttf" />
+	  <None Remove="Resources\Images\leftarrow.png" />
+	  <None Remove="Resources\Images\avatar.png" />
+	  <None Remove="Views\" />
+	  <None Remove="ViewModel\" />
+	  <None Remove="Resources\Images\carticon.png" />
+	  <None Remove="Resources\Images\menuicon.png" />
+	  <None Remove="Handlers\" />
+	  <None Remove="Resources\Images\furniture.png" />
+	  <None Remove="Resources\Images\minus.png" />
+	  <None Remove="Resources\Images\plus.png" />
+	  <None Remove="Model\" />
+	  <None Remove="Views\Account\" />
+	  <None Remove="ViewModel\Account\" />
+	  <None Remove="Views\Home\" />
+	  <None Remove="ViewModel\Home\" />
+	  <None Remove="Views\Product\" />
+	  <None Remove="ViewModel\Product\" />
+	  <None Remove="Resources\Images\creamcolor.png" />
+	  <None Remove="Resources\Images\deliveryicon.png" />
+	  <None Remove="Resources\Images\green.png" />
+	  <None Remove="Resources\Images\greenshadebed.png" />
+	  <None Remove="Resources\Images\bluecouch.png" />
+	  <None Remove="Resources\AppIcon\ic_launcher_round.svg" />
+	  <None Remove="Views\Profile\" />
+	  <None Remove="ViewModel\Profile\" />
+	  <None Remove="Resources\Images\HomePageGridOverLay\Address.png" />
+	  <None Remove="ViewModel\ProductDetailsPage\" />
+	  <None Remove="Views\ProductDetailsPagee\" />
+	  <None Remove="Views\Orders\" />
+	  <None Remove="ViewModel\Orders\" />
+	  <None Remove="Resources\Images\basket.png" />
+	  <None Remove="Resources\Images\bbb.png" />
+	  <None Remove="Resources\Images\beddd.png" />
+	  <None Remove="Resources\Images\blackbed.png" />
+	  <None Remove="Resources\Images\blackcouch.png" />
+	  <None Remove="Resources\Images\blackfs.png" />
+	  <None Remove="Resources\Images\blue.png" />
+	  <None Remove="Resources\Images\blueclubchair.png" />
+	  <None Remove="Resources\Images\bottlegreenclubchair.png" />
+	  <None Remove="Resources\Images\brownes.png" />
+	  <None Remove="Resources\Images\brownlatherclubchair.png" />
+	  <None Remove="Resources\Images\brownssdinning.png" />
+	  <None Remove="Resources\Images\cameraicon.png" />
+	  <None Remove="Resources\Images\cash.png" />
+	  <None Remove="Resources\Images\chocolatefs.png" />
+	  <None Remove="Resources\Images\classicchair.png" />
+	  <None Remove="Resources\Images\clubchair.png" />
+	  <None Remove="Resources\Images\cod.png" />
+	  <None Remove="Resources\Images\contact.png" />
+	  <None Remove="Resources\Images\couch.png" />
+	  <None Remove="Resources\Images\cream.png" />
+	  <None Remove="Resources\Images\creambed.png" />
+	  <None Remove="Resources\Images\creamclubchair.png" />
+	  <None Remove="Resources\Images\cross.png" />
+	  <None Remove="Resources\Images\customer.png" />
+	  <None Remove="Resources\Images\dinningwithsidetabel.png" />
+	  <None Remove="Resources\Images\email.png" />
+	  <None Remove="Resources\Images\fivestar.png" />
+	  <None Remove="Resources\Images\furniturelogo.png" />
+	  <None Remove="Resources\Images\gpay.png" />
+	  <None Remove="Resources\Images\gray2.png" />
+	  <None Remove="Resources\Images\gray3.png" />
+	  <None Remove="Resources\Images\graycaouch.png" />
+	  <None Remove="Resources\Images\greencouchst.png" />
+	  <None Remove="Resources\Images\greencouchts.png" />
+	  <None Remove="Resources\Images\greenright.png" />
+	  <None Remove="Resources\Images\homeblackicon.png" />
+	  <None Remove="Resources\Images\homeicon.png" />
+	  <None Remove="Resources\Images\location.png" />
+	  <None Remove="Resources\Images\logout.png" />
+	  <None Remove="Resources\Images\mastercard.png" />
+	  <None Remove="Resources\Images\mathsplus.png" />
+	  <None Remove="Resources\Images\multicolorcouch.png" />
+	  <None Remove="Resources\Images\multiply.png" />
+	  <None Remove="Resources\Images\nastercard2.png" />
+	  <None Remove="Resources\Images\officeicon.png" />
+	  <None Remove="Resources\Images\orangeclubchair.png" />
+	  <None Remove="Resources\Images\orangecouch.png" />
+	  <None Remove="Resources\Images\order.png" />
+	  <None Remove="Resources\Images\paytm.png" />
+	  <None Remove="Resources\Images\peachclubchair.png" />
+	  <None Remove="Resources\Images\peachcouch.png" />
+	  <None Remove="Resources\Images\pencil.png" />
+	  <None Remove="Resources\Images\person.png" />
+	  <None Remove="Resources\Images\phone.png" />
+	  <None Remove="Resources\Images\phonepe.png" />
+	  <None Remove="Resources\Images\pngwingcom.png" />
+	  <None Remove="Resources\Images\profile.png" />
+	  <None Remove="Resources\Images\red.png" />
+	  <None Remove="Resources\Images\right.png" />
+	  <None Remove="Resources\Images\roundtabledinning.png" />
+	  <None Remove="Resources\Images\violetcouch.png" />
+	  <None Remove="Resources\Images\whiteclubchair.png" />
+	  <None Remove="Resources\Images\whitees.png" />
+	  <None Remove="Resources\Images\whitessdinning.png" />
+	  <None Remove="Resources\Images\woodenbody.png" />
+	  <None Remove="Resources\Images\woodenbodybed.png" />
+	  <None Remove="Resources\Images\woodenlinebed.png" />
+	  <None Remove="Resources\Images\yellowclubchair.png" />
+	  <None Remove="Resources\Images\yellowcouch.png" />
+	  <None Remove="Resources\Images\whit.png" />
+	  <None Remove="Resources\Images\address.png" />
+	  <None Remove="Resources\Images\muticolorchair.png" />
+	  <None Remove="Resources\Images\yellowchair.png" />
+	  <None Remove="Resources\Images\redmodernchair.png" />
+	  <None Remove="Resources\Images\whitechair.png" />
+	  <None Remove="Resources\Images\couchone.png" />
+	  <None Remove="Resources\Images\couchtwo.png" />
+	  <None Remove="Resources\Images\coucheight.png" />
+	  <None Remove="Resources\Images\couchfive.png" />
+	  <None Remove="Resources\Images\couchfour.png" />
+	  <None Remove="Resources\Images\couchseven.png" />
+	  <None Remove="Resources\Images\couchsix.png" />
+	  <None Remove="Resources\Images\couchthree.png" />
+	  <None Remove="Resources\Images\kidbed.png" />
+	  <None Remove="Resources\AppIcon\appiconfg.svg" />
+	  <None Remove="Resources\Splash\splash.svg" />
+	  <None Remove="Services\" />
+	  <None Remove="Resources\Images\profileimage.png" />
+	  <None Remove="Resources\Images\profileimagee.png" />
+	  <None Remove="RequestProvider\" />
+	  <None Remove="Resources\Images\arrowdown.png" />
+	  <None Remove="Resources\Images\delete.png" />
+	  <None Remove="Resources\Images\addtocart.png" />
+	  <None Remove="ViewModel\Popup\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <BundleResource Include="Resources\Fonts\OpenSans_SemiCondensed-Bold.ttf" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-android'">
+    <PackageReference Include="Xamarin.AndroidX.Core" Version="1.12.0.2" />
+    <PackageReference Include="Xamarin.AndroidX.Collection" Version="1.3.0.1" />
+    <PackageReference Include="Xamarin.AndroidX.Collection.Ktx" Version="1.3.0.1" />
+    <PackageReference Include="Xamarin.AndroidX.Activity.Ktx" Version="1.8.0.1" />
+    <PackageReference Include="Xamarin.AndroidX.Browser" Version="1.6.0.2" />
+</ItemGroup>
+ <!-- platform assets -->
+</Project>

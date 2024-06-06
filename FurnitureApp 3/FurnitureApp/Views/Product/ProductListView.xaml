@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FurnitureApp.Views.Product.ProductListView"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="15,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="leftarrow" HeightRequest="20" WidthRequest="25" HorizontalOptions="Start" Aspect="AspectFill" VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackArrowCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Style="{StaticResource CommonGrid0Label}" Text="{Binding CategoryName}" TextColor="Black" FontSize="15"/>
+            </Grid>
+        </StackLayout>
+
+        <StackLayout Grid.Row="1" Style="{StaticResource ExpandedStack}" Spacing="5" >
+            <CollectionView x:Name="productList" ItemsSource="{Binding ProductList}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" >
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout x:Name="AlbumViewLayout" Orientation="Vertical" Span="{OnIdiom Phone='2', Tablet='3'}" HorizontalItemSpacing="0" VerticalItemSpacing="0"/>
+                </CollectionView.ItemsLayout>
+
+                <!--VerticleCollection-->
+                <CollectionView.ItemTemplate >
+                    <DataTemplate  >
+                        <StackLayout Style="{StaticResource VerticleFillHoriFillExtends}">
+                            <Border  BackgroundColor="White" HeightRequest="220" StrokeThickness="1" VerticalOptions="Fill" HorizontalOptions="FillAndExpand"  Margin="10,5">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="18"/>
+                                </Border.StrokeShape>
+                                <Border.Shadow>
+                                    <Shadow Brush="LightGray" Offset="1.5,1.5" Radius="0" Opacity="1"/>
+                                </Border.Shadow>
+                                <StackLayout Style="{StaticResource VerticleFillHoriFillExtends}" Spacing="5">
+                                    <Image Source="{Binding  ProductUrl}" HeightRequest="150" WidthRequest="150" VerticalOptions="Fill" HorizontalOptions="Fill" Aspect="AspectFit" ></Image>
+                                    <Label Text="{Binding ProductName}" Style="{StaticResource TrendingProductLabelProp}"/>
+                                    <Label VerticalOptions="Fill" HorizontalOptions="CenterAndExpand"  >
+                                        <Label.FormattedText  >
+                                            <FormattedString>
+                                                <FormattedString.Spans >
+                                                    <Span Text="Rs." FontSize="13" FontAttributes="Bold" TextColor="Black"  />
+                                                    <Span Text="{Binding ProductPrice}"  FontSize="13"  TextColor="Black" FontAttributes="Bold"  />
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <!--<Label Text="{Binding ProductPrice}" Style="{StaticResource TrendingProductLabelProp}" FontAttributes="Bold"/>-->
+                                </StackLayout>
+                            </Border>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference productList}, Path=BindingContext.ProductDetailsViewCommand}" CommandParameter="{Binding .}"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </Grid>
+</ContentPage>

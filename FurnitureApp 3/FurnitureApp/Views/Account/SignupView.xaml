@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:handlers="clr-namespace:FurnitureApp.Handlers"
+                  NavigationPage.HasNavigationBar="False"
+             x:Class="FurnitureApp.Views.Account.SignupView" >
+
+
+    <Grid Style="{StaticResource ExpandedGrid}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0" Style="{StaticResource VerticalFillStack}" >
+            <Image  Source="shape"   HorizontalOptions="EndAndExpand" VerticalOptions="Start" Aspect="AspectFit"  WidthRequest="{OnIdiom Phone='192', Tablet='450'}" HeightRequest="{OnIdiom Phone='161', Tablet='400'}"  />
+        </StackLayout>
+
+
+        <ScrollView Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
+            <!--Create Account-->
+            <StackLayout   Margin="20"  Style="{StaticResource ExpandedStack }">
+                <StackLayout Spacing="15"  >
+                    <Label Text="Create Account"  FontFamily="OpenSans_SemiCondensed-Bold"  Style="{StaticResource Titleboldandfontsize}"  TextColor="#2C2C2C" />
+
+                    <!--   BorderLess Entry   Full Name  -->
+                    <Border Style="{StaticResource BorderLessProperty}"  Stroke="OrangeRed" StrokeThickness="0.5">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5"/>
+                        </Border.StrokeShape>
+                        <handlers:BorderlessEntry BackgroundColor="Transparent"   Placeholder="Full Name"  FontFamily="OpenSans_SemiCondensed-Bold"  TextColor="#2C2C2C"   FontSize="16"/>
+                    </Border>
+
+
+                    <!--   BorderLess Entry   Email  -->
+                    <StackLayout  Style="{StaticResource VerticalFillStack}" Spacing="5"  >
+                        <Border Style="{StaticResource BorderLessProperty}"  Stroke="OrangeRed" StrokeThickness="0.5">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5"/>
+                            </Border.StrokeShape>
+                            <handlers:BorderlessEntry Text="{Binding Email}" BackgroundColor="Transparent"   Placeholder="Email"  FontFamily="OpenSans_SemiCondensed-Bold"  TextColor="#2C2C2C"   FontSize="16"/>
+                        </Border>
+                        <Label  IsVisible="{Binding IsEmailErrorMesgVisible}"  Text="Oops ! invalid Email" TextColor="Red" FontSize="8" Margin="5,0,0,0"/>
+                    </StackLayout>
+
+                    <!--   BorderLess Entry   Password  -->
+
+                    <StackLayout  Style="{StaticResource VerticalFillStack}" Spacing="5" >
+                        <Border Style="{StaticResource BorderLessProperty}"  Stroke="OrangeRed" StrokeThickness="0.5">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5"/>
+                            </Border.StrokeShape>
+                            <handlers:BorderlessEntry Text="{Binding Password}" x:Name="PasswordEntry2"   BackgroundColor="Transparent"   Placeholder="Password"  FontFamily="OpenSans_SemiCondensed-Bold"  TextColor="#2C2C2C"   FontSize="16"/>
+                        </Border>
+                        <Label IsVisible="{Binding IsPassErrorMesgVisible}" Text="Oops ! invalid Password" TextColor="Red" FontSize="8"  Margin="5,0,0,0" />
+                    </StackLayout>
+
+                    <!--Signup Button-->
+                    <Border Style="{StaticResource BorderProperties}">
+
+                        <StackLayout  HorizontalOptions="FillAndExpand" VerticalOptions="Fill" >
+
+                            <StackLayout Style="{StaticResource ButtonStackCenterExp}" >
+
+                                <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center"
+                                       Text="SIGN UP "
+                                        TextColor="White"
+                                        FontAttributes="Bold"
+                                        FontSize="Medium">
+                                </Label>
+                                <!--ArrowBtn-->
+                                <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                       Source="rightarrow" Aspect="Fill" HeightRequest="30" WidthRequest="25"  />
+                            </StackLayout>
+
+                        </StackLayout>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SignUpCommand}" />
+                        </Border.GestureRecognizers>
+                    </Border>
+                </StackLayout>
+
+                <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                    <Label Style="{StaticResource Label15Style}" FontSize="14" Text="Already have an Account?" TextColor="#2C2C2C" />
+                    <Label
+                        Style="{StaticResource Label15Style}"
+                         Text=" Sign in "
+                         TextColor="#FA6400">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SignInCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>

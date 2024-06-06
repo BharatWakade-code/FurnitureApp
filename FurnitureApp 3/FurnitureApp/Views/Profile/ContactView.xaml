@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:handlers="clr-namespace:FurnitureApp.Handlers"
+             x:Class="FurnitureApp.Views.Profile.ContactView" BackgroundColor="#F8F9F9"  NavigationPage.HasNavigationBar="False" >
+
+<StackLayout   BackgroundColor="#F8F9F9" Style="{StaticResource ExpandedStack}" >
+        <Grid Style="{StaticResource CommanExpandedGrid}"  Margin="0" RowSpacing="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--Gridrow0-->
+            <StackLayout Style="{StaticResource CommonGrid0Stack}"  Margin="10,15,10,0"  >
+                <Grid Style="{StaticResource VerticleFillGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image  Style="{StaticResource BackArrowImageStyle}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackArrowCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label   Style="{StaticResource CommonGrid0Label}" Text="Contact" TextColor="Black" FontSize="15"/>
+                </Grid>
+            </StackLayout>
+            <StackLayout Grid.Row="1" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Spacing="25" Margin="20,10,20,0" >
+                <StackLayout  VerticalOptions="Fill" HorizontalOptions="Center"  Spacing="10">
+                    <Label Text="{Binding UserName}" FontSize="12" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
+                </StackLayout>
+                <StackLayout Grid.Row="2"  Style="{StaticResource  ExpandedStack}"   Spacing="10">
+
+                    <Border  Style="{StaticResource BorderforProfile}">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5"/>
+                        </Border.StrokeShape>
+                         <Border.Shadow>
+                        <Shadow Brush="LightGray"  Offset="1.5,1.5"   Radius="0" Opacity="1"/>
+                    </Border.Shadow>
+                        <handlers:BorderlessEntry  Text="{Binding FullName}" Style="{StaticResource BorderlessEntryStyleProfile}"  x:Name="FullnameEntry" Keyboard="Text"   Placeholder="Full Name"   />
+                    </Border>
+
+
+                    <Border  Style="{StaticResource BorderforProfile}">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5"/>
+                        </Border.StrokeShape>
+                         <Border.Shadow>
+                        <Shadow Brush="LightGray"  Offset="1.5,1.5"   Radius="0" Opacity="1"/>
+                    </Border.Shadow>
+                        <handlers:BorderlessEntry  Text="{Binding Phone}" Style="{StaticResource BorderlessEntryStyleProfile}"  x:Name="PhoneEntry" Keyboard="Telephone" Placeholder="Phone"   />
+                    </Border>
+
+                    <Border Style="{StaticResource BorderforProfile}"  >
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5"/>
+                        </Border.StrokeShape>
+                         <Border.Shadow>
+                        <Shadow Brush="LightGray"  Offset="1.5,1.5"   Radius="0" Opacity="1"/>
+                    </Border.Shadow>
+                        <handlers:BorderlessEntry  Text="{Binding Email}" Style="{StaticResource BorderlessEntryStyleProfile}"  x:Name="EmailEntry" Keyboard="Email"    Placeholder="xyz@gmail.com"  />
+                    </Border>
+                    <Border Style="{StaticResource BorderforProfile}"  >
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5"/>
+                        </Border.StrokeShape>
+                         <Border.Shadow>
+                        <Shadow Brush="LightGray"  Offset="1.5,1.5"   Radius="0" Opacity="1"/>
+                    </Border.Shadow>
+                        <handlers:BorderlessEntry  Text="{Binding Email}" Style="{StaticResource BorderlessEntryStyleProfile}"  x:Name="MessEntry" Keyboard="Email"    Placeholder="Your Message is About"  />
+                    </Border>
+
+                    <Border  Style="{StaticResource BorderforProfile}" HeightRequest="100" >
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5"/>
+                        </Border.StrokeShape>
+                         <Border.Shadow>
+                        <Shadow Brush="LightGray"  Offset="1.5,1.5"   Radius="0" Opacity="1"/>
+                    </Border.Shadow>
+                        <handlers:BorderlessEntry  Text="{Binding Address}"  Style="{StaticResource BorderlessEntryStyleProfile}"  Keyboard="Default"    Placeholder="Plese Explain Your Issue in Details Here "    />
+                    </Border>
+
+
+                    <Border    Style="{StaticResource BorderPropertiesforCantact}" >
+                        <StackLayout  HorizontalOptions="CenterAndExpand" VerticalOptions="Fill">
+                            <StackLayout Style="{StaticResource ButtonStackCenterExp}">
+                                <Label Style="{StaticResource LableStyleLogin}" Text="SEND MESSAGE" />
+                            </StackLayout>
+                        </StackLayout>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoginCommand}"  />
+                        </Border.GestureRecognizers>
+
+                    </Border>
+                </StackLayout>
+            </StackLayout>
+
+        </Grid>
+    </StackLayout>
+</ContentPage>

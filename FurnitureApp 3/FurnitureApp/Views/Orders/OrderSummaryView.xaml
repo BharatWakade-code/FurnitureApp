@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FurnitureApp.Views.Orders.OrderSummaryView"
+               BackgroundColor="#F8F9F9"
+                NavigationPage.HasNavigationBar="False">
+
+    <StackLayout  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  >
+        <Grid VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!--GridRow0 start-->
+            <StackLayout Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"    >
+                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="15,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image  Source="leftarrow" HeightRequest="20" WidthRequest="25"   HorizontalOptions="Start" Aspect="AspectFill"  VerticalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackArrowCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label   Style="{StaticResource CommonGrid0Label}" Text="Order Summary" TextColor="Black" FontSize="15"/>
+                </Grid>
+            </StackLayout>
+
+            <ScrollView  Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Padding="0,10"   VerticalScrollBarVisibility="Never">
+                <StackLayout   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="10" >
+
+                    <!--Navigation bar design border-->
+                    <Border Stroke="White" BackgroundColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="70" Margin="15,0" Padding="10">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5"/>
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="LightGray"  Offset="1.5,1.5"   Radius="0" Opacity="1"/>
+                        </Border.Shadow>
+                        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="10" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="3.5*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="3.5*"/>
+                                        <ColumnDefinition Width="1*"/>
+
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Grid.Column="0"  BackgroundColor="#FA6400" HeightRequest="20" WidthRequest="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="10"/>
+                                        </Border.StrokeShape>
+                                        <Image Source="right" Aspect="AspectFit" HeightRequest="15" WidthRequest="15"/>
+                                    </Border>
+                                    <Border Grid.Column="1" BackgroundColor="#FA6400" HeightRequest="2" WidthRequest="{OnIdiom Phone='140', Tablet='307'}"   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="10,0"></Border>
+                                    <Border Grid.Column="2" BackgroundColor="#FA6400" HeightRequest="20" WidthRequest="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="10"/>
+                                        </Border.StrokeShape>
+                                        <Image Source="right" Aspect="AspectFit" HeightRequest="15" WidthRequest="15"/>
+                                    </Border>
+                                    <Border Grid.Column="3" BackgroundColor="Grey" HeightRequest="2"  WidthRequest="{OnIdiom Phone='135', Tablet='301'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="10,0"></Border>
+                                    <Border Grid.Column="4" BackgroundColor="Grey" HeightRequest="20" WidthRequest="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="10"/>
+                                        </Border.StrokeShape>
+                                    </Border>
+                                </Grid>
+                                <StackLayout Grid.Row="1"  HorizontalOptions="FillAndExpand" Orientation="Horizontal" VerticalOptions="FillAndExpand" >
+                                    <Label Text="Address" FontSize="10" FontAttributes="None" TextColor="Grey" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                                    <Label  Text="Order Summary" FontSize="10" FontAttributes="None" TextColor="Black" HorizontalOptions="CenterAndExpand" />
+                                    <Label Text="Payment" FontSize="10" FontAttributes="None" TextColor="Grey" HorizontalOptions="EndAndExpand" />
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                    </Border>
+
+                    <!--Address-->
+                    <Border  BackgroundColor="White" StrokeThickness="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="100" Padding="15" Margin="15,0"  >
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5"/>
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="LightGray"  Offset="1.5,1.5"   Radius="0" Opacity="1"/>
+                        </Border.Shadow>
+                        <StackLayout Style="{StaticResource VerticleFillHoriFillExtends}"   >
+                            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Horizontal" >
+                                <Label Text="Deliver to : " TextColor="Black" FontSize="12" FontAttributes="Bold"/>
+                                <Button Text="CHANGE" HeightRequest="25" HorizontalOptions="EndAndExpand"  TextColor="White" BackgroundColor="#FA6400" FontSize="8" Padding="5" />
+                            </StackLayout>
+                            <StackLayout Style="{StaticResource NewAddressTextStackForNAme}" >
+                                <Label Text="Bharat P Wakade" TextColor="Black" HorizontalOptions="Start" FontAttributes="Bold" VerticalOptions="CenterAndExpand" FontSize="12"/>
+                                <Image Source="homeicon" Style="{StaticResource GridOverLayImage}"/>
+                            </StackLayout>
+                            <StackLayout Style="{StaticResource VerticleFillHoriFillExtends}"  >
+                                <Label Text="At.Gadchiroli , Tah+ Dist - Gadchiroli " Style="{StaticResource AddressLabels}"  />
+                                <Label Text="442605 , Maharashtra" Style="{StaticResource AddressLabels}"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Border>
+
+                    <!--You Will Save-->
+                    <Border BackgroundColor="#FFF9F4" StrokeThickness="1" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" HeightRequest="35" >
+                        <Border.Shadow>
+                            <Shadow Brush="LightGray"  Offset="1.5,1.5"   Radius="0" Opacity="1"/>
+                        </Border.Shadow>
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="StartAndExpand" Margin="15,0" >
+                            <Label Text="You Will Save Rs.1234" FontSize="12" TextColor="#FA6400"/>
+                        </StackLayout>
+                    </Border>
+
+                    <!--CollectionStart-->
+                    <StackLayout VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand"   >
+                        <CollectionView VerticalOptions="Fill"  HorizontalOptions="FillAndExpand" x:Name="orderProductList"   ItemsSource="{Binding OrderProductList}" Margin="15,0" >
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <SwipeView>
+                                        <SwipeView.RightItems>
+                                            <SwipeItems>
+                                                <SwipeItem  IconImageSource="delete" BackgroundColor="#F8F9F9" 
+                                                    Command="{Binding Source={x:Reference orderProductList}, Path=BindingContext.DeleteCommand}"  CommandParameter="{Binding .}"  />
+                                            </SwipeItems>
+                                        </SwipeView.RightItems>
+                                        <!-- Content -->
+
+                                        <StackLayout VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand"   Margin="0,0,0,10">
+                                            <Border BackgroundColor="White" StrokeThickness="1" VerticalOptions="Fill" HorizontalOptions="FillAndExpand"  Padding="15">
+                                                <Border.StrokeShape>
+                                                    <RoundRectangle CornerRadius="5"/>
+                                                </Border.StrokeShape>
+                                                <Border.Shadow>
+                                                    <Shadow Brush="LightGray"  Offset="1.5,1.5"   Radius="0" Opacity="1"/>
+                                                </Border.Shadow>
+                                                <StackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand">
+                                                    <Grid VerticalOptions="Fill" HorizontalOptions="FillAndExpand"  >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="6*"/>
+                                                            <ColumnDefinition Width="4*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout  Grid.Column="0" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Spacing="10">
+                                                            <Label Text="{Binding ProductName}" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+                                                            <Label Text="Seller Name : BB Furniture" TextColor="Grey" FontSize="12"/>
+                                                            <Label>
+                                                                <Label.FormattedText  >
+                                                                    <FormattedString>
+                                                                        <FormattedString.Spans >
+                                                                            <Span Text="Rs."  FontSize="13"  TextColor="Black" FontAttributes="Bold" />
+                                                                            <Span Text="{Binding ProductPrice}" FontSize="13" FontAttributes="Bold" TextColor="Black"/>
+                                                                            <Span Text=" MRP "  FontSize="11"  TextColor="Grey" />
+                                                                            <Span Text="{Binding ProductMRP}"  FontSize="11"  TextColor="Grey" TextDecorations="Strikethrough" />
+                                                                            <Span Text="  "  FontSize="13"  TextColor="Grey" />
+                                                                            <Span Text="{Binding ProductOffers}"  FontSize="11"  TextColor="Grey" />
+                                                                            <Span Text="% off"  FontSize="13"  TextColor="Grey" />
+                                                                        </FormattedString.Spans>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <Label Text="Free Delivery" TextColor="Grey" FontSize="13"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Padding="0">
+                                                            <Image Source="{Binding ProductUrl}" Aspect="AspectFit" VerticalOptions="Fill" HeightRequest="100" WidthRequest="155" HorizontalOptions="FillAndExpand" />
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </Border>
+                                        </StackLayout>
+                                    </SwipeView>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                    <!--CollectionEnd-->
+
+                    <!--PriceDetailsStart-->
+                    <StackLayout  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="10">
+                        <Border StrokeThickness="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5"/>
+                            </Border.StrokeShape>
+                            <Border.Shadow>
+                                <Shadow Brush="LightGray"  Offset="1.5,1.5"   Radius="0" Opacity="1"/>
+                            </Border.Shadow>
+                            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="20" Spacing="10">
+                                <Label Text="Price Details" TextColor="Black" FontSize="16" FontAttributes="Bold"/>
+                                <StackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                    <Label Text="Price (3 Items)" FontSize="10" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                                    <Label Text="58,451" FontSize="10" TextColor="Black" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                                </StackLayout>
+
+                                <StackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                    <Label Text="Discout" FontSize="10" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                                    <Label Text="- Rs. 75845" FontSize="10" TextColor="Green" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                                </StackLayout>
+
+                                <StackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                    <Label Text="By more and save more" FontSize="10" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                                    <Label Text="- Rs. 200" FontSize="10" TextColor="Grey" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                                </StackLayout>
+
+                                <StackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                    <Label Text="Delivery Charges" FontSize="10" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                                    <Label Text="FREE Delivery" FontSize="10" TextColor="Green" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <BoxView  HorizontalOptions="FillAndExpand" HeightRequest="0.5" BackgroundColor="#B2BABB" />
+                                <StackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                    <Label Text="Total Amount" FontSize="10" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                                    <Label Text="Rs.58,524" FontSize="10" TextColor="Black" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Border>
+                        <!--PriceDetailsEnd-->
+                        <!--ButtonStart-->
+                        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="10,0" Orientation="Horizontal">
+                            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="5">
+                                <Label Text="77,451" TextColor="Grey" FontSize="10" TextDecorations="Strikethrough" />
+                                <Label Text="47,451" TextColor="#FA6400" FontSize="12" />
+                            </StackLayout>
+                            <Button Text="Continue" HeightRequest="40" HorizontalOptions="End"  TextColor="White" BackgroundColor="#FA6400" FontSize="16" CornerRadius="8" >
+                                <Button.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding NavigateToPaymentCommand}"/>
+                                </Button.GestureRecognizers>
+                            </Button>
+                        </StackLayout>
+                        <!--ButtonEnd-->
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:FurnitureApp.Model"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F8F9F9" 
+             x:Class="FurnitureApp.Views.Product.CartPageView"
+             Title="CartPageView">
+
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  BackgroundColor="#F8F9F9"  >
+        <Grid VerticalOptions="FillAndExpand"     HorizontalOptions="FillAndExpand"  RowSpacing="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <!--GridRowColumn0 start-->
+            <StackLayout Grid.Row="0" HorizontalOptions="Fill" VerticalOptions="Fill"    Orientation="Horizontal" Margin="15,10,15,0"  >
+                <Image Source="leftarrow" HeightRequest="20" WidthRequest="25"   HorizontalOptions="StartAndExpand" Aspect="AspectFill"  VerticalOptions="CenterAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackArrowCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label    Text="My Cart" FontSize="16"   FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Black"  />
+                <Label     Text="Clear" FontSize="10"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{ Binding ClearCommand}"/>
+                    </Label.GestureRecognizers>
+
+                </Label>
+            </StackLayout>
+            <!--GridRowColumn0 End-->
+
+            <!--GridRowColumn1 start-->
+            <StackLayout  Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="15,0,15,0"  BackgroundColor="White">
+                <Border   Padding="5" BackgroundColor="White">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="LightGray"  Offset="1.5,1.5"   Radius="0" Opacity="1"/>
+                    </Border.Shadow>
+                    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Horizontal" >
+                        <Image Source="deliveryicon" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand" WidthRequest="30" HeightRequest="30"/>
+                        <Label Text="Check Delivery Dates" FontSize="11" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" TextColor="#2C2C2C" />
+
+                        <Border  StrokeThickness="1" Stroke="#FA6400"  HorizontalOptions="EndAndExpand"  Padding="10">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="7"/>
+                            </Border.StrokeShape>
+
+                            <Label Text="Enter Pincode" FontSize="7" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" TextColor="#FA6400">
+                            </Label>
+                        </Border>
+                    </StackLayout>
+                </Border>
+            </StackLayout>
+            <!--GridRowColumn1 end-->
+            <!--Collection-->
+            <!--GridRowColumn2  start-->
+            <StackLayout Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
+                <CollectionView   x:Name="cartProductList"   ItemsSource="{Binding CartProductList}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never"  >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="viewmodel:ProductModel"  >
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem  IconImageSource="delete" BackgroundColor="#F8F9F9"
+                                     Command="{Binding Source={x:Reference cartProductList}, Path=BindingContext.DeleteCommand}"  CommandParameter="{Binding .}"  />
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <!-- Content -->
+
+
+                                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,5,0,0" >
+                                    <Border   HeightRequest="100"   StrokeThickness="0" BackgroundColor="White"   HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="15,10,15,0 " >
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="5"/>
+                                        </Border.StrokeShape>
+                                        <Border.Shadow>
+                                            <Shadow Brush="LightGray"  Offset="1.5,1.5"   Radius="0" Opacity="1"/>
+                                        </Border.Shadow>
+                                        <Grid VerticalOptions="Fill" HorizontalOptions="FillAndExpand"   ColumnSpacing="5">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="8*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Border Grid.Column="0" VerticalOptions="Fill" HorizontalOptions="FillAndExpand"   Stroke="White">
+                                                <Image  Source="{Binding ProductUrl}"   Aspect="AspectFit" />
+                                            </Border>
+                                            <StackLayout Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="25"  >
+                                                <!--<Label  Text="{Binding  ProductPrice }" FontSize="10"  TextColor="Black"  />-->
+                                                <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="6">
+                                                    <Label Text="{Binding  ProductName }"  MaxLines="1" LineBreakMode="TailTruncation" FontSize="14"  TextColor="#2C2C2C" />
+                                                    <Label>
+                                                        <Label.FormattedText  >
+                                                            <FormattedString>
+                                                                <FormattedString.Spans >
+                                                                    <Span Text="Rs." FontSize="10" FontAttributes="Bold" TextColor="#000000" />
+                                                                    <Span Text="{Binding  ProductPrice }"  FontSize="10"  FontAttributes="Bold" TextColor="#000000" />
+                                                                </FormattedString.Spans>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <!--<Label  Text="{Binding  ProductPrice }" FontSize="10"  TextColor="Black"  />-->
+                                                    <StackLayout  Orientation="Horizontal"  HorizontalOptions="StartAndExpand" Spacing="7" VerticalOptions="Center"  >
+                                                        <Image Source="minus" Aspect="AspectFit"   Style="{StaticResource PlusMinusImageSize}" >
+                                                            <Image.GestureRecognizers>
+                                                                <TapGestureRecognizer Command="{Binding Source={x:Reference cartProductList}, Path=BindingContext.MinusTapCommand}" CommandParameter="{Binding .}"/>                                                                <TapGestureRecognizer />
+                                                            </Image.GestureRecognizers>
+                                                        </Image>
+                                                        <Label Text="{Binding ProductQuantity}"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  FontSize="10"  />
+                                                        <Image Source="plus"  Aspect="AspectFit" Style="{StaticResource PlusMinusImageSize}">
+                                                            <Image.GestureRecognizers>
+                                                                <TapGestureRecognizer Command="{Binding Source={x:Reference cartProductList}, Path=BindingContext.PlusTapCommand}" CommandParameter="{Binding .}"/>                                                                <TapGestureRecognizer />
+                                                            </Image.GestureRecognizers>
+                                                        </Image>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Grid>
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={x:Reference cartProductList}, Path=BindingContext.TodetailsPageCommand}" CommandParameter="{Binding .}"/>
+                                        </Border.GestureRecognizers>
+                                    </Border>
+                                </StackLayout>
+                            </SwipeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Grid VerticalOptions="End"  HorizontalOptions="FillAndExpand"  >
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Spacing="3" Margin="20,0,0,0" >
+                        <Label Text="Total" FontSize="14" TextColor="Black" HorizontalOptions="StartAndExpand"/>
+                        <Label>
+                            <Label.FormattedText  >
+                                <FormattedString>
+                                    <FormattedString.Spans >
+                                        <Span Text=" Rs." FontSize="13" FontAttributes="Bold" TextColor="#FA6400"/>
+                                        <Span Text="504"  FontSize="13"  TextColor="#FA6400" FontAttributes="Bold" />
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                    <Button  Grid.Column="1"  HorizontalOptions="FillAndExpand" HeightRequest="50"
+                        BackgroundColor="#FA6400"
+                        Text="PROCEED"
+                        TextColor="White" Command="{Binding NavtoOrderSummaryCommand}"/>
+                </Grid>
+            </StackLayout>
+            <!--GridRowColumn2  end-->
+        </Grid>
+
+    </StackLayout>
+</ContentPage>

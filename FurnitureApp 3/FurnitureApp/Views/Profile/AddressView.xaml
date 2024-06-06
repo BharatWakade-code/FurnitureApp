@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FurnitureApp.Views.Profile.AddressView"
+             BackgroundColor="#F8F9F9" 
+             NavigationPage.HasNavigationBar="False"
+             >
+
+    <StackLayout   BackgroundColor="#F8F9F9" Style="{StaticResource ExpandedStack}" >
+        <Grid Style="{StaticResource CommanExpandedGrid}"  Margin="0" RowSpacing="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--Gridrow0-->
+            <StackLayout Style="{StaticResource CommonGrid0Stack}"  Margin="10,15,10,0"  >
+                <Grid Style="{StaticResource VerticleFillGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image  Style="{StaticResource BackArrowImageStyle}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackArrowCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label   Style="{StaticResource CommonGrid0Label}" Text="Address" TextColor="Black" FontSize="15" />
+                </Grid>
+            </StackLayout>
+
+            <!--GridRow1-->
+            <StackLayout Grid.Row="1"  Style="{StaticResource ExpandedStack}"  Spacing="20" >
+                <StackLayout Style="{StaticResource NewAddressTextStack}"  >
+                    <Image  Source="mathsplus" Style="{StaticResource GridOverLayImage}"/>
+                    <Label Text="Add New Address" TextColor="Orange" FontSize="14" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+                <BoxView  HorizontalOptions="FillAndExpand" HeightRequest="0.5" BackgroundColor="#B2BABB" />
+                <Border  BackgroundColor="White" StrokeThickness="1" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Padding="15" Margin="15,0,15,0"  >
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="LightGray"  Offset="1.5,1.5"   Radius="0" Opacity="1"/>
+                    </Border.Shadow>
+                    <StackLayout Style="{StaticResource VerticleFillHoriFillExtends}"  >
+                        <StackLayout Style="{StaticResource NewAddressTextStackForNAme}" >
+                            <Label Text="Bharat P Wakade" TextColor="Black" HorizontalOptions="Start" FontAttributes="Bold" VerticalOptions="CenterAndExpand" FontSize="12"/>
+                            <Image Source="homeicon" Style="{StaticResource GridOverLayImage}"/>
+                        </StackLayout>
+                        <StackLayout Style="{StaticResource VerticleFillHoriFillExtends}" Margin="0,12,0,0" Spacing="5" >
+                            <Label Text="{Binding EditAddress} " Style="{StaticResource AddressLabels}"  />
+                            <Label Text="442605 , Maharashtra" Style="{StaticResource AddressLabels}"/>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="Fill" HorizontalOptions="EndAndExpand"  Orientation="Horizontal" Spacing="10">
+                            <Button Text="SAVE" Style="{StaticResource AddressBtns}" Command="{Binding SaveCommand}"/>
+                            <Button Text="EDIT" Style="{StaticResource AddressBtns}" Command="{Binding EditCommand}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Border>
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+</ContentPage>

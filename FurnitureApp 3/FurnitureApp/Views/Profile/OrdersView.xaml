@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodel="clr-namespace:FurnitureApp.Model"
+             x:Class="FurnitureApp.Views.Profile.OrdersView"
+             BackgroundColor="#F8F9F9" 
+             NavigationPage.HasNavigationBar="False" >
+
+    <StackLayout   BackgroundColor="#F8F9F9" Style="{StaticResource ExpandedStack}" >
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="15,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--Gridrow0-->
+            <StackLayout Style="{StaticResource CommonGrid0Stack}"  >
+                <Grid Style="{StaticResource VerticleFillGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image  Style="{StaticResource BackArrowImageStyle}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackArrowCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label   Style="{StaticResource CommonGrid0Label}" Text="Orders" TextColor="Black" FontSize="15" />
+                </Grid>
+            </StackLayout>
+            <!--GridRow1-->
+            <CollectionView  Grid.Row="1"   x:Name="orderProductList"   ItemsSource="{Binding OrderProductList}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never"  >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="viewmodel:ProductModel"  >
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem  IconImageSource="delete" BackgroundColor="#F8F9F9"
+                                     Command="{Binding Source={x:Reference orderProductList}, Path=BindingContext.DeleteCommand}"  CommandParameter="{Binding .}"  />
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <!-- Content -->
+
+                            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" >
+                                <Border  BackgroundColor="White" StrokeThickness="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="10" Margin="0,10,0,0">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="15"/>
+                                    </Border.StrokeShape>
+                                    <Border.Shadow>
+                                        <Shadow Brush="LightGray" Offset="0.9,0.9"  Radius="0" Opacity="1"/>
+                                    </Border.Shadow>
+                                    <Grid  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" ColumnSpacing="20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Column="0" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
+                                            <Image Source="{Binding ProductUrl}"  WidthRequest="75" HeightRequest="75" Aspect="AspectFit" VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" Spacing="5"  >
+                                            <Label Text="ORDER NUMBER" FontSize="10" TextColor="LightGrey" FontAttributes="Bold" />
+                                            <Label Text="{Binding ProductId}" Style="{StaticResource LabelFontsizeandColour}"  />
+                                            <Label>
+                                                <Label.FormattedText  >
+                                                    <FormattedString>
+                                                        <FormattedString.Spans >
+                                                            <Span Text="{Binding ProductQuantity}" FontSize="12" Style="{StaticResource LabelFontsizeandColour}"  FontAttributes="Bold" />
+                                                            <Span Text=" Item(s) Delivered" FontSize="12" TextColor="Black" FontAttributes="Bold"/>
+                                                        </FormattedString.Spans>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label>
+                                                <Label.FormattedText  >
+                                                    <FormattedString>
+                                                        <FormattedString.Spans >
+                                                            <Span Text="Package Delivered on " FontSize="10" TextColor="Black"/>
+                                                            <Span Text="{Binding ProductDate}"  Style="{StaticResource LabelFontsizeandColour}"  />
+                                                        </FormattedString.Spans>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                    </Grid>
+                                </Border>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference orderProductList}, Path=BindingContext.ToOrderDetailsCommand}" CommandParameter="{Binding .}"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+        </Grid>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FurnitureApp.Views.Orders.PaymentPageView"
+              BackgroundColor="#F8F9F9" 
+             NavigationPage.HasNavigationBar="False" >
+
+
+    <StackLayout  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"   BackgroundColor="#F8F9F9"  >
+        <Grid VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand"  >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!--GridRow0 start-->
+            <StackLayout Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"   >
+                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="15,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image  Source="leftarrow" HeightRequest="20" WidthRequest="25"   HorizontalOptions="Start" Aspect="AspectFill"  VerticalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackArrowCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label   Style="{StaticResource CommonGrid0Label}" Text="Payment" TextColor="Black"/>
+                </Grid>
+            </StackLayout>
+
+            <StackLayout  Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0" Spacing="0">
+                <ScrollView   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Padding="0" VerticalScrollBarVisibility="Never">
+                    <StackLayout   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="10"  >
+                        <Border Stroke="White" BackgroundColor="White" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" HeightRequest="70" Margin="15,0" Padding="10">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5"/>
+                            </Border.StrokeShape>
+                            <Border.Shadow>
+                                <Shadow Brush="LightGray"  Offset="1.5,1.5"   Radius="0" Opacity="1"/>
+                            </Border.Shadow>
+                            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="10" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="3.5*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="3.5*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border Grid.Column="0"  BackgroundColor="#FA6400" HeightRequest="20" WidthRequest="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="10"/>
+                                            </Border.StrokeShape>
+                                            <Image Source="right" Aspect="AspectFit" HeightRequest="15" WidthRequest="15"/>
+                                        </Border>
+                                        <Border Grid.Column="1" BackgroundColor="#FA6400" HeightRequest="2" WidthRequest="{OnIdiom Phone='140', Tablet='307'}"   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="10,0"></Border>
+                                        <Border Grid.Column="2" BackgroundColor="#FA6400" HeightRequest="20" WidthRequest="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="10"/>
+                                            </Border.StrokeShape>
+                                            <Image Source="right" Aspect="AspectFit" HeightRequest="15" WidthRequest="15"/>
+                                        </Border>
+                                        <Border Grid.Column="3" BackgroundColor="#FA6400" HeightRequest="2"  WidthRequest="{OnIdiom Phone='135', Tablet='301'}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="10,0"></Border>
+                                        <Border Grid.Column="4" BackgroundColor="#FA6400" HeightRequest="20" WidthRequest="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="10"/>
+                                            </Border.StrokeShape>
+                                            <Image Source="right" Aspect="AspectFit" HeightRequest="15" WidthRequest="15"/>
+                                        </Border>
+                                    </Grid>
+                                    <StackLayout Grid.Row="1"  HorizontalOptions="FillAndExpand" Orientation="Horizontal" VerticalOptions="FillAndExpand" >
+                                        <Label Text="Address" FontSize="10" FontAttributes="None" TextColor="Grey" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                                        <Label  Text="Order Summary" FontSize="10" FontAttributes="None" TextColor="Grey" HorizontalOptions="CenterAndExpand" />
+                                        <Label Text="Payment" FontSize="10" FontAttributes="None" TextColor="Black" HorizontalOptions="EndAndExpand" />
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                        </Border>
+                        <Border StrokeThickness="1" BackgroundColor="White" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Margin="15,0" Padding="10">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5"/>
+                            </Border.StrokeShape>
+                            <Border.Shadow>
+                                <Shadow Brush="LightGray"  Offset="1.5,1.5"   Radius="0" Opacity="1" />
+                            </Border.Shadow>
+                            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="7">
+                                <Label Text="10% off on SBI Bank Credit Cards and Credit EMI Trxns, up to 1500. On orders of Rs. 5,000 and above" TextColor="Black" FontSize="11"/>
+                                <Label Text="T&amp;C" TextColor="Blue" FontSize="12" HorizontalOptions="EndAndExpand">
+                                     <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding TCCommand}"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <BoxView  HorizontalOptions="FillAndExpand" VerticalOptions="Fill" HeightRequest="0.5" BackgroundColor="#B2BABB" />
+                                <Label Text="View all offers" TextColor="Blue" FontSize="12" HorizontalOptions="CenterAndExpand" VerticalOptions="Fill">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding VAOCommand}"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </StackLayout>
+                        </Border>
+                        <Border StrokeThickness="1" BackgroundColor="White" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Margin="15,0" Padding="10">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5"/>
+                            </Border.StrokeShape>
+                            <Border.Shadow>
+                                <Shadow Brush="LightGray"  Offset="1.5,1.5"   Radius="0" Opacity="1" />
+                            </Border.Shadow>
+                            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="10">
+                                <Label Text="All other options" TextColor="Black" FontSize="12" HorizontalOptions="StartAndExpand"/>
+                                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="0">
+                                    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Column="0"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+                                            <RadioButton Content="UPI" IsChecked="True"/>
+                                            <RadioButton Content="Wallet / Postpaid"  />
+                                            <RadioButton Content="Credit / Debit / ATM Card" />
+                                            <RadioButton Content="EMI (Easy Installments)" />
+                                            <RadioButton Content="Cash on Delivery" />
+                                        </StackLayout>
+
+                                        <StackLayout Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="15">
+                                            <StackLayout  VerticalOptions="Fill" HorizontalOptions="EndAndExpand" Orientation="Horizontal" Spacing="8">
+                                                <Image Source="gpay" Aspect="AspectFit" HeightRequest="15" WidthRequest="15" HorizontalOptions="EndAndExpand"/>
+                                                <Image Source="phonepe" Aspect="AspectFit" HeightRequest="15" WidthRequest="15" HorizontalOptions="EndAndExpand"/>
+                                            </StackLayout>
+                                            <Image Source="paytm" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" HorizontalOptions="EndAndExpand"/>
+                                            <Image Source="mastercard" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" HorizontalOptions="EndAndExpand"/>
+                                            <Image Source="cash" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" HorizontalOptions="EndAndExpand"/>
+                                            <Image Source="cod" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" HorizontalOptions="EndAndExpand"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </StackLayout>
+                            </StackLayout>
+                        </Border>
+                        <Border StrokeThickness="1" BackgroundColor="White" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Margin="15,0" Padding="10">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5"/>
+                            </Border.StrokeShape>
+                            <Border.Shadow>
+                                <Shadow Brush="LightGray"  Offset="1.5,1.5"   Radius="0" Opacity="1" />
+                            </Border.Shadow>
+                            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand" Spacing="7" Orientation="Horizontal">
+                                <Image Source="mathsplus" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" HorizontalOptions="EndAndExpand"/>
+                                <Label Text="Gift Card" TextColor="Black" FontSize="12" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </Border>
+                        <Border StrokeThickness="1" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Margin="15,0" BackgroundColor="White" >
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5"/>
+                            </Border.StrokeShape>
+                            <Border.Shadow>
+                                <Shadow Brush="LightGray"  Offset="1.5,1.5"   Radius="0" Opacity="1"/>
+                            </Border.Shadow>
+                            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="20" Spacing="10">
+                                <Label Text="Price Details" TextColor="Black" FontSize="14" FontAttributes="Bold"/>
+                                <StackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                    <Label Text="Price (3 Items)" FontSize="10" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                                    <Label Text="58,451" FontSize="10" TextColor="Black" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                                </StackLayout>
+
+                                <StackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                    <Label Text="Discout" FontSize="10" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                                    <Label Text="- Rs. 75845" FontSize="10" TextColor="Green" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                                </StackLayout>
+
+                                <StackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                    <Label Text="By more and save more" FontSize="10" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                                    <Label Text="- Rs. 200" FontSize="10" TextColor="Grey" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                                </StackLayout>
+
+                                <StackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                    <Label Text="Delivery Charges" FontSize="10" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                                    <Label Text="FREE Delivery" FontSize="10" TextColor="Green" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <BoxView  HorizontalOptions="FillAndExpand" HeightRequest="0.5" BackgroundColor="#B2BABB" />
+                                <StackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                    <Label Text="Total Amount" FontSize="10" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                                    <Label Text="Rs.58,524" FontSize="10" TextColor="Black" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Border>
+                    </StackLayout>
+                </ScrollView>
+
+                <Border StrokeThickness="0.4" Stroke="LightGray" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" HeightRequest="60" >
+                    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+                        <Border StrokeThickness="0" VerticalOptions="Fill" HorizontalOptions="FillAndExpand"  BackgroundColor="#FFF9F4">
+                            <Label Text="100% safe and Secure Payments" TextColor="Black" FontSize="8" HorizontalTextAlignment="Center"/>
+                        </Border>
+
+                        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="5" Orientation="Horizontal" Padding="10">
+                            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="5" >
+                                <Label Text="77,451" TextColor="Grey" FontSize="10" TextDecorations="Strikethrough" />
+                                <Label Text="58,524" TextColor="#FA6400" FontSize="12" />
+                            </StackLayout>
+                            <Button Text="PAY FOR ORDER" HeightRequest="40" HorizontalOptions="EndAndExpand"  TextColor="White" BackgroundColor="#FA6400" FontSize="16" CornerRadius="8" >
+                                <Button.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SuccesPaymentCommand}"/>
+                                </Button.GestureRecognizers>
+                            </Button>
+                        </StackLayout>
+                    </StackLayout>
+                </Border>
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>

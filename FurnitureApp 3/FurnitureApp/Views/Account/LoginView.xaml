@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:handlers="clr-namespace:FurnitureApp.Handlers"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="FurnitureApp.Views.Account.LoginView" >
+
+
+
+
+    <Grid Style="{StaticResource ExpandedGrid}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0" Style="{StaticResource ExpandedStack}" >
+            <Image  Source="shape"   HorizontalOptions="EndAndExpand" VerticalOptions="Fill" Aspect="AspectFit" WidthRequest="{OnIdiom Phone='192', Tablet='450'}" HeightRequest="{OnIdiom Phone='161', Tablet='400'}" />
+        </StackLayout>
+
+        <ScrollView Grid.Row="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
+            <StackLayout Style="{StaticResource ExpandedStack }"  Spacing="8" Margin="20" >
+                <!--Login-->
+                <Label Text="Login"  HorizontalOptions="StartAndExpand" FontSize="Title" FontAttributes="Bold"  TextColor="#2C2C2C"/>
+                <Label Text="Please Sign in to Continue" FontFamily="OpenSans_SemiCondensed-Bold" FontSize="16" FontAttributes="Bold" TextColor="LightGray"  />
+                <StackLayout  Style="{StaticResource VerticalFillStack }" Spacing="15"   Margin="0,20,0,0">
+                    <!--Email -->
+                    <StackLayout Spacing="2">
+                        <Border Style="{StaticResource BorderLessProperty}"  Stroke="OrangeRed" StrokeThickness="0.5">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5"/>
+                            </Border.StrokeShape>
+                            <handlers:BorderlessEntry  Completed="EmailEntry_Completed" Text="{Binding Email}"  x:Name="EmailEntry" Keyboard="Email" BackgroundColor="Transparent"   Placeholder="Email"  FontFamily="OpenSans_SemiCondensed-Bold"  TextColor="#2C2C2C"   FontSize="16"  />
+                        </Border>
+                        <Label  IsVisible="{Binding IsEmailErrorMesgVisible}"  Text="Oops ! invalid Email" TextColor="Red" FontSize="8" Margin="5,0,0,0" />
+                    </StackLayout>
+
+                    <!--Password -->
+                    <Border Style="{StaticResource BorderLessProperty}"  Stroke="OrangeRed" StrokeThickness="0.5" >
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5"/>
+                        </Border.StrokeShape>
+                        <handlers:BorderlessEntry Text="{Binding Password}" x:Name="passwordEntry" IsPassword="True" BackgroundColor="Transparent"   Placeholder="Password" Style="{StaticResource BorderlessEntryStyle}" />
+                    </Border>
+                    <Label  IsVisible="{Binding IsPassErrorMesgVisible}" Text="Oops ! invalid Password" TextColor="Red" FontSize="8"  Margin="5,0,0,0"/>
+
+                </StackLayout>
+                <!--Login Button-->
+                <Border    Style="{StaticResource BorderProperties}" >
+                    <StackLayout  Style="{StaticResource VerticalFillStack}">
+                        <StackLayout Style="{StaticResource ButtonStackCenterExp}">
+                            <Label Style="{StaticResource LableStyleLogin}" Text="LOGIN" />
+                            <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="rightarrow" Aspect="Fill" HeightRequest="30" WidthRequest="25"  />
+                        </StackLayout>
+                    </StackLayout>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LoginCommand}"  />
+                    </Border.GestureRecognizers>
+
+                </Border>
+                <!--Bottom Label-->
+                <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                    <Label  Text="Not a member? "  Style="{StaticResource Label15Style}"   TextColor="#2C2C2C" />
+                    <Label TextColor="#FA6400" Text=" Signup Now">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SignUpCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+
+        </ScrollView>
+
+    </Grid>
+
+
+</ContentPage>

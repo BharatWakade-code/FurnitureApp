@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:handlers="clr-namespace:FurnitureApp.Handlers">
+
+    <Style x:Key="ExpandedStack" TargetType="StackLayout">
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+    </Style>
+
+    <Style x:Key="CommonGrid0Stack" TargetType="StackLayout">
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+        <Setter Property="Grid.Row" Value="0"/>
+    </Style>
+
+    <Style x:Key="CommonGrid0Label" TargetType="Label">
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="Grid.Column" Value="1"/>
+    </Style>
+
+
+    <Style x:Key="BackArrowImageStyle" TargetType="Image">
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="Source" Value="leftarrow"/>
+        <Setter Property="Aspect" Value="AspectFit"/>
+        <Setter Property="HeightRequest" Value="20"/>
+        <Setter Property="WidthRequest" Value="25"/>
+        <Setter Property="Grid.Column" Value="0"/>
+    </Style>
+
+     <Style x:Key="BackArrowImageStyleforDetailsPage" TargetType="Image">
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="Source" Value="leftarrow"/>
+        <Setter Property="Aspect" Value="AspectFit"/>
+        <Setter Property="HeightRequest" Value="20"/>
+        <Setter Property="WidthRequest" Value="25"/>
+        <Setter Property="Grid.Row" Value="0"/>
+    </Style>
+
+    <!--Grid-->
+    <Style  x:Key="ShapeImageWidthHeight" TargetType="Grid">
+        <Setter  Property="VerticalOptions" Value="Start"/>
+        <Setter  Property="HorizontalOptions"  Value="EndAndExpand"/>
+        <Setter   Property="HeightRequest"  Value="250"/>
+        <Setter   Property="WidthRequest"  Value="200"/>
+    </Style>
+    <Style x:Key="ExpandedGrid" TargetType="Grid">
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+    </Style>
+
+
+    <Style x:Key="CommanExpandedGrid" TargetType="Grid">
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="Margin" Value="20"/>
+        <Setter Property="RowSpacing" Value="10"/>
+    </Style>
+
+    
+
+
+    <Style x:Key="VerticleFillGrid" TargetType="Grid">
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+    </Style>
+
+    <Style TargetType="TabbedPage">
+        <Setter Property="BarBackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}" />
+        <Setter Property="BarTextColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+        <Setter Property="UnselectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
+        <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
+    </Style>
+
+
+
+    <Style   x:Key="StackBottomtext"  TargetType="StackLayout">
+
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="Padding" Value="20"/>
+        <Setter Property="Spacing" Value="2"/>
+
+    </Style>
+
+    <Style x:Key="VerticalFillStack" TargetType="StackLayout">
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="VerticalOptions" Value="Fill"/>
+    </Style>
+
+    <Style x:Key="ButtonStackCenterExp" TargetType="StackLayout">
+
+        <Setter  Property="Margin" Value="1,0"/>
+        <Setter  Property="Spacing" Value="10"/>
+        <Setter  Property="HorizontalOptions" Value="Center"/>
+        <Setter  Property="VerticalOptions" Value="CenterAndExpand"/>
+        <Setter  Property="Orientation" Value="Horizontal"/>
+    </Style>
+
+    <Style x:Key="BorderProperties" TargetType="Border">
+        <Setter   Property="StrokeShape" Value="RoundRectangle 50"/>
+        <Setter  Property="HorizontalOptions" Value="End"/>
+        <Setter  Property="Stroke" Value="Transparent"/>
+        <Setter  Property="HeightRequest" Value="50"/>
+        <Setter  Property="Padding" Value="20,0"/>
+        <!--<Setter  Property="WidthRequest" Value="155"/>-->
+        <Setter  Property="BackgroundColor" Value="#FA6400"/>
+        <Setter  Property="Margin" Value="0,20,1,0"/>
+    </Style>
+
+    <Style x:Key="BorderPropertiesforCantact" TargetType="Border">
+        <Setter   Property="StrokeShape" Value="RoundRectangle 50"/>
+        <Setter  Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter  Property="Stroke" Value="Transparent"/>
+        <Setter  Property="HeightRequest" Value="30"/>
+        <Setter  Property="Padding" Value="20,0"/>
+        <!--<Setter  Property="WidthRequest" Value="155"/>-->
+        <Setter  Property="BackgroundColor" Value="#FA6400"/>
+        <Setter  Property="Margin" Value="0,32,1,0"/>
+    </Style>
+
+     <Style x:Key="BorderPropertiesforPRoductDetailsPage" TargetType="Border">
+        <Setter   Property="StrokeShape" Value="RoundRectangle 50"/>
+        <Setter  Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter  Property="Stroke" Value="Transparent"/>
+        <Setter  Property="HeightRequest" Value="40"/>
+         <Setter  Property="WidthRequest" Value="300"/>
+        <Setter  Property="Padding" Value="20,0"/>
+        <!--<Setter  Property="WidthRequest" Value="155"/>-->
+        <Setter  Property="BackgroundColor" Value="#FA6400"/>
+     
+    </Style>
+
+
+
+
+    <Style  x:Key="Titleboldandfontsize" TargetType="Label">
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="Title"/>
+    </Style>
+
+
+    <Style  x:Key="Label15Style" TargetType="Label">
+        <Setter Property="FontAttributes" Value="Bold"/>
+
+    </Style>
+
+
+    <Style  x:Key="LableStyleLogin" TargetType="Label">
+        <Setter Property="HorizontalOptions" Value="EndAndExpand" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="Medium" />
+    </Style>
+
+
+    <Style x:Key="BorderLessProperty" TargetType="Border">
+        <Setter Property="HeightRequest" Value="45"/>
+        <Setter Property="Stroke" Value="Orange"/>
+        <Setter Property="Padding" Value="12"/>
+    </Style>
+
+    <Style x:Key="BorderlessEntryStyle" TargetType="handlers:BorderlessEntry">
+        <Setter Property="FontFamily" Value="OpenSans_SemiCondensed-Bold"/>
+        <Setter Property="TextColor" Value="#2C2C2C"  />
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="FontSize" Value="16"  />
+    </Style>
+
+    <Style x:Key="PlusMinusImageSize" TargetType="Image">
+        <Setter Property="HeightRequest" Value="13" />
+        <Setter Property="WidthRequest" Value="13" />
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter Property="VerticalOptions" Value="StartAndExpand"/>
+    </Style>
+
+    <Style x:Key="BorderforProfile" TargetType="Border">
+        <Setter Property="Stroke" Value="LightGray" />
+        <Setter Property="StrokeThickness" Value="0.5" />
+        <Setter Property="BackgroundColor" Value="#FAFAFA" />
+        <Setter Property="Padding" Value="8" />
+    </Style>
+
+    <Style x:Key="Profilelable" TargetType="Label">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="TextColor" Value="Black"/>
+    </Style>
+    <Style x:Key="BorderlessEntryStyleProfile" TargetType="handlers:BorderlessEntry">
+        <Setter Property="FontFamily" Value="OpenSans_SemiCondensed-Bold"/>
+        <Setter Property="TextColor" Value="#2C2C2C"  />
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="FontSize" Value="12"  />
+    </Style>
+
+    <Style x:Key="GridOverLayText" TargetType="StackLayout">
+        <Setter Property="VerticalOptions" Value="Fill"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+
+        <Setter Property="Spacing" Value="10"/>
+        <Setter Property="Margin" Value="20,0"/>
+    </Style>
+    <Style x:Key="GridOverLayImage" TargetType="Image">
+        <Setter Property="VerticalOptions" Value="Start"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="HeightRequest" Value="20"/>
+        <Setter Property="WidthRequest" Value="20"/>
+        <Setter Property="Aspect" Value="AspectFit"/>
+    </Style>
+
+    <Style x:Key="NewAddressTextStack" TargetType="StackLayout">
+        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Spacing" Value="10"/>
+        <Setter Property="Margin" Value="20,0"/>
+    </Style>
+
+    <Style x:Key="NewAddressTextStackForNAme" TargetType="StackLayout">
+        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Spacing" Value="10"/>
+
+    </Style>
+
+    <Style x:Key="VerticleFillHoriFillExtends" TargetType="StackLayout">
+        <Setter Property="VerticalOptions" Value="Fill"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+    </Style>
+
+    <Style x:Key="AddressBtns" TargetType="Button">
+        <Setter Property="TextColor" Value="Black"/>
+        <Setter Property="BorderColor" Value="LightGray"/>
+        <Setter Property="BorderWidth" Value="0.7"/>
+        <Setter Property="BackgroundColor" Value="#F8F9F9"/>
+          <Setter Property="FontSize" Value="9"/>
+
+    </Style>
+
+    <Style x:Key="AddressLabels" TargetType="Label">
+        <Setter Property="TextColor" Value="Black"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="FontFamily" Value="OpenSans-Regular"/>
+    </Style>
+
+    <Style x:Key="VerFillHorFill" TargetType="StackLayout">
+        <Setter Property="HorizontalOptions" Value="Fill"/>
+        <Setter Property="VerticalOptions" Value="Fill"/>
+    </Style>
+
+    <Style x:Key="LabelFontsizeandColour" TargetType="Label">
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="TextColor" Value="Black"/>
+    </Style>
+
+    <Style x:Key="LabelStyleForGridOverlayStack" TargetType="StackLayout">
+        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+        <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Spacing" Value="10"/>
+    </Style>
+
+    <Style x:Key="GridOverlayLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="Black"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+    </Style>
+
+    <Style x:Key="ImageWidthAndHeight" TargetType="Image">
+        <Setter Property="HeightRequest" Value="30"/>
+        <Setter Property="WidthRequest" Value="30"/>
+        <Setter Property="Aspect" Value="Fill"/>
+    </Style>
+
+    <Style x:Key="TrendingProductLabelProp" TargetType="Label">
+        <Setter Property="TextColor" Value="Black"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="VerticalOptions" Value="Fill"/>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+    </Style>
+</ResourceDictionary>
+
